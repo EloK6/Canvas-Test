@@ -1,20 +1,33 @@
 <!DOCTYPE html>
 <html lang="fr">
-	<head>
-		<meta charset="utf-8" />
-		<title>Canvas</title>
-		<link rel="stylesheet" href="style.css" />
-	</head>
-	<body>
-		<div id="container">
-			<div id="happy-smile">
-				<canvas id="happy" width="150px" height="150px"></canvas>
-			</div>
-			<div id="pacman">
-				<canvas id="game" width="150px" height="150px"></canvas>
-			</div>
-		</div>
+  <head>
+    <meta charset="utf-8" />
+    <title>Canvas</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div id="container">
+      <div class="card">
+        <canvas id="happy" width="150px" height="150px"></canvas>
+        <div class="content">
+          <h4>Working with Arc</h4>
+        </div>
+      </div>
+      <div class="card">
+        <canvas id="game" width="150px" height="150px"></canvas>
+        <div class="content">
+          <h4>Working with BeizerCurve</h4>
+        </div>
+      </div>
+      <div class="card">
+        <canvas id="color" width="150px" height="150px"></canvas>
+        <div class="content">
+          <h4>Working with Colors</h4>
+        </div>
+      </div>
+    </div>
 
-		<script src="app.js"></script>
-	</body>
+    <script src="app.js"></script>
+  </body>
 </html>
