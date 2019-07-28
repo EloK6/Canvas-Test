@@ -1,7 +1,8 @@
 #container {
   display: flex;
   flex-direction: row;
-  align-items: space-around;
+  justify-content: space-around;
+  align-items: center;
   flex-wrap: wrap;
 }
 

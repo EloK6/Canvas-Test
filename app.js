@@ -13,7 +13,6 @@ function pencil() {
     ctx.stroke();
   }
 }
-
 pencil();
 
 function draw() {
@@ -143,7 +142,6 @@ function draw() {
     ctx.stroke();
   }
 }
-
 draw();
 
 function colors() {
@@ -157,7 +155,6 @@ function colors() {
     }
   }
 }
-
 colors();
 
 function strokes() {
@@ -173,5 +170,29 @@ function strokes() {
     }
   }
 }
-
 strokes();
+
+function transparency() {
+  var ctx = document.getElementById("transparency").getContext("2d");
+  //Background
+  ctx.fillStyle = "#56445D";
+  ctx.fillRect(0, 0, 75, 75);
+  ctx.fillStyle = "#548687";
+  ctx.fillRect(75, 0, 75, 75);
+  ctx.fillStyle = "#8FBC94";
+  ctx.fillRect(0, 75, 75, 75);
+  ctx.fillStyle = "#C5E99B";
+  ctx.fillRect(75, 75, 75, 75);
+  ctx.fillStyle = "#FFF";
+
+  // Set transparency value
+  ctx.globalAlpha = 0.3;
+
+  // Draw semi transparent circles
+  for (i = 0; i < 8; i++) {
+    ctx.beginPath();
+    ctx.arc(75, 75, 10 + 10 * i, 0, Math.PI * 2, true);
+    ctx.fill();
+  }
+}
+transparency();
