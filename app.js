@@ -196,3 +196,23 @@ function transparency() {
   }
 }
 transparency();
+
+function gradient() {
+  var ctx = document.getElementById("gradient").getContext("2d");
+  // Create a radial gradient
+  // The inner circle is at x=75, y=75, with radius=30
+  // The outer circle is at x=85, y=85, with radius=60
+  var gradient = ctx.createRadialGradient(75, 75, 30, 85, 85, 60);
+
+  // Add 5 color stops
+  gradient.addColorStop(0, "#f9df82");
+  gradient.addColorStop(0.7, "#d4dd9c");
+  gradient.addColorStop(0.8, "#a6cbb4");
+  gradient.addColorStop(0.9, "#83b9c4");
+  gradient.addColorStop(1, "#425787");
+
+  // Set the fill style and draw a rectangle
+  ctx.fillStyle = gradient;
+  ctx.fillRect(20, 20, 150, 150);
+}
+gradient();
