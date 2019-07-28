@@ -115,6 +115,32 @@ function draw() {
 		ctx.beginPath();
 		ctx.arc(89, 102, 2, 0, Math.PI * 2, true);
 		ctx.fill();
+
+		// Global Border
+		ctx.beginPath();
+		ctx.moveTo(12, 27);
+		ctx.lineTo(12, 147);
+		ctx.arcTo(12, 162, 27, 162, 15);
+		ctx.lineTo(147, 162);
+		ctx.arcTo(162, 162, 162, 147, 15);
+		ctx.lineTo(162, 27);
+		ctx.arcTo(162, 12, 147, 12, 15);
+		ctx.lineTo(27, 12);
+		ctx.arcTo(12, 12, 12, 27, 15);
+		ctx.stroke();
+
+		// roundedRect(ctx, 53, 53, 49, 33, 10);
+		ctx.beginPath();
+		ctx.moveTo(53, 63);
+		ctx.lineTo(53, 76);
+		ctx.arcTo(53, 86, 63, 86, 10);
+		ctx.lineTo(92, 86);
+		ctx.arcTo(102, 86, 102, 76, 10);
+		ctx.lineTo(102, 63);
+		ctx.arcTo(102, 53, 92, 53, 10);
+		ctx.lineTo(63, 53);
+		ctx.arcTo(53, 53, 53, 63, 10);
+		ctx.stroke();
 	}
 }
 
