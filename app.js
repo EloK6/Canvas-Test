@@ -233,7 +233,7 @@ function update() {
     hue = shiftHue(hue);
     var color = "hsl(" + hue + ",100%,50%)";
     //console.log(color)
-    ctx.clearRect(0, 0, 480, 270);
+    ctx.clearRect(0, 0, 150, 150);
     ctx.fillStyle = color;
     ctx.arc(75, 75, 75, 0, 2 * Math.PI);
     ctx.fill();
@@ -243,3 +243,66 @@ function update() {
   window.requestAnimationFrame(updateCanvas);
 }
 update();
+
+function moving() {
+  var ctx = document.getElementById("moving").getContext("2d");
+  ctx.fillStyle = "blue";
+  ctx.arc(25, 0, 25, 0, 2 * Math.PI);
+  ctx.arc(75, 0, 25, 0, 2 * Math.PI);
+  ctx.arc(125, 0, 25, 0, 2 * Math.PI);
+  ctx.fill();
+  var speed1 = 0;
+  var speed2 = 0;
+  var speed3 = 0;
+
+  // Clear canvas each time we refresh it
+  function clearCanvas() {
+    ctx.clearRect(0, 0, 150, 150);
+  }
+  //UpdateCanvas
+  function updateCanvas() {
+    speed1 += 1;
+    speed2 += 2;
+    speed3 += 3;
+    clearCanvas();
+    ctx.arc(25, speed1, 25, 0, 2 * Math.PI);
+    ctx.arc(75, speed2, 25, 0, 2 * Math.PI);
+    ctx.arc(125, speed3, 25, 0, 2 * Math.PI);
+    ctx.fill();
+    window.requestAnimationFrame(updateCanvas);
+  }
+  window.requestAnimationFrame(updateCanvas);
+}
+moving();
+
+function moving2() {
+  var canvas = document.getElementById("moving2");
+  var ctx = canvas.getContext("2d");
+  ctx.fillStyle = "#FF0000";
+  ctx.fillRect(25, 0, 25, 25);
+  ctx.fillRect(75, 0, 25, 25);
+  ctx.fillRect(125, 0, 25, 25);
+  var speed1 = 0;
+  var speed2 = 0;
+  var speed3 = 0;
+
+  // Clear canvas each time we refresh it
+  function clearCanvas() {
+    ctx.clearRect(0, 0, 700, 450);
+  }
+
+  //UpdateCanvas
+  function updateCanvas() {
+    speed1 += 1;
+    speed2 += 2;
+    speed3 += 3;
+    clearCanvas();
+    ctx.fillRect(25, speed1, 25, 25);
+    ctx.fillRect(75, speed2, 25, 25);
+    ctx.fillRect(125, speed3, 25, 25);
+    window.requestAnimationFrame(updateCanvas);
+  }
+
+  window.requestAnimationFrame(updateCanvas);
+}
+moving2();
