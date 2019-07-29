@@ -247,17 +247,18 @@ update();
 function moving() {
   var ctx = document.getElementById("moving").getContext("2d");
   ctx.fillStyle = "blue";
-  ctx.arc(25, 0, 25, 0, 2 * Math.PI);
-  ctx.arc(75, 0, 25, 0, 2 * Math.PI);
-  ctx.arc(125, 0, 25, 0, 2 * Math.PI);
+  ctx.arc(25, 0, 25, 0, 2 * Math.PI, true);
+  ctx.arc(75, 0, 25, 0, 2 * Math.PI, true);
+  ctx.arc(125, 0, 25, 0, 2 * Math.PI, true);
   ctx.fill();
+
   var speed1 = 0;
   var speed2 = 0;
   var speed3 = 0;
 
   // Clear canvas each time we refresh it
   function clearCanvas() {
-    ctx.clearRect(0, 0, 150, 150);
+    ctx.clearRect(0, 0, 700, 450);
   }
   //UpdateCanvas
   function updateCanvas() {
@@ -306,3 +307,66 @@ function moving2() {
   window.requestAnimationFrame(updateCanvas);
 }
 moving2();
+
+//game
+function userInteraction() {
+  var canvas = document.getElementById("user-interaction");
+  var ctx = canvas.getContext("2d");
+
+  var ghost = {
+    x: 25,
+    y: 25,
+    moveUp: function() {
+      this.y -= 25;
+    },
+    moveDown: function() {
+      this.y += 25;
+    },
+    moveLeft: function() {
+      this.x -= 25;
+    },
+    moveRight: function() {
+      this.x += 25;
+    }
+  };
+
+  function draw(ghost) {
+    var img = new Image();
+    img.onload = function() {
+      ctx.drawImage(img, ghost.x, ghost.y, 50, 50);
+    };
+    img.src = "https://media.giphy.com/media/Qr8JE9Hvi7ave/200.gif";
+  }
+
+  document.onkeydown = function(e) {
+    switch (e.keyCode) {
+      case 38:
+        ghost.moveUp();
+        console.log("up", ghost);
+        break;
+      case 40:
+        ghost.moveDown();
+        console.log("down", ghost);
+        break;
+      case 37:
+        ghost.moveLeft();
+        console.log("left", ghost);
+        break;
+      case 39:
+        ghost.moveRight();
+        console.log("right", ghost);
+        break;
+    }
+    updateCanvas();
+  };
+
+  function updateCanvas() {
+    ctx.clearRect(0, 0, 1500, 1700);
+    ctx.fillText("Ghost_x: " + ghost.x, 580, 40);
+    ctx.fillText("Ghost_y: " + ghost.y, 580, 60);
+    draw(ghost);
+  }
+
+  updateCanvas();
+}
+userInteraction();
