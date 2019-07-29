@@ -216,3 +216,30 @@ function gradient() {
   ctx.fillRect(20, 20, 150, 150);
 }
 gradient();
+
+//Update
+function update() {
+  var canvas = document.getElementById("update");
+  var ctx = canvas.getContext("2d");
+  ctx.fillStyle = "#FF0000";
+  ctx.arc(75, 75, 75, 0, 2 * Math.PI);
+  ctx.fill();
+  var hue = 0;
+  function shiftHue(hue) {
+    return (hue + 1) % 255;
+  }
+
+  function updateCanvas() {
+    hue = shiftHue(hue);
+    var color = "hsl(" + hue + ",100%,50%)";
+    //console.log(color)
+    ctx.clearRect(0, 0, 480, 270);
+    ctx.fillStyle = color;
+    ctx.arc(75, 75, 75, 0, 2 * Math.PI);
+    ctx.fill();
+    window.requestAnimationFrame(updateCanvas);
+  }
+
+  window.requestAnimationFrame(updateCanvas);
+}
+update();
