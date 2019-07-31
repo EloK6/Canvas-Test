@@ -219,7 +219,7 @@ function gradient() {
 
   // Set the fill style and draw a rectangle
   ctx.fillStyle = gradient;
-  ctx.fillRect(20, 20, 150, 150);
+  ctx.fillRect(0, 0, 150, 150);
 }
 gradient();
 
@@ -253,26 +253,25 @@ update();
 //MOVEMENT
 function moving() {
   var ctx = document.getElementById("moving").getContext("2d");
-  ctx.fillStyle = "blue";
+
+  ctx.beginPath();
   ctx.arc(25, 0, 25, 0, 2 * Math.PI, true);
   ctx.arc(75, 0, 25, 0, 2 * Math.PI, true);
   ctx.arc(125, 0, 25, 0, 2 * Math.PI, true);
+  ctx.closePath();
+  ctx.fillStyle = "aqua";
   ctx.fill();
 
   var speed1 = 0;
   var speed2 = 0;
   var speed3 = 0;
 
-  // Clear canvas each time we refresh it
-  function clearCanvas() {
-    ctx.clearRect(0, 0, 700, 450);
-  }
   //UpdateCanvas
   function updateCanvas() {
     speed1 += 1;
     speed2 += 2;
     speed3 += 3;
-    clearCanvas();
+    ctx.clearRect(0, 0, 700, 450);
     ctx.arc(25, speed1, 25, 0, 2 * Math.PI);
     ctx.arc(75, speed2, 25, 0, 2 * Math.PI);
     ctx.arc(125, speed3, 25, 0, 2 * Math.PI);
@@ -280,13 +279,15 @@ function moving() {
     window.requestAnimationFrame(updateCanvas);
   }
   window.requestAnimationFrame(updateCanvas);
+
+  window.requestAnimationFrame(update);
 }
 moving();
 
 function moving2() {
   var canvas = document.getElementById("moving2");
   var ctx = canvas.getContext("2d");
-  ctx.fillStyle = "#FF0000";
+  ctx.fillStyle = "aqua";
   ctx.fillRect(25, 0, 25, 25);
   ctx.fillRect(75, 0, 25, 25);
   ctx.fillRect(125, 0, 25, 25);
@@ -436,3 +437,50 @@ function composition() {
   ctx.fill();
 }
 composition();
+
+//VELOCITY
+function velocity() {
+  var canvas = document.getElementById("velocity");
+  var ctx = canvas.getContext("2d");
+  var ball = {
+    x: 100,
+    y: 100,
+    vx: 1,
+    vy: 1,
+    radius: 10,
+    color: "aqua",
+    draw: function() {
+      ctx.beginPath();
+      ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2, true);
+      ctx.closePath();
+      ctx.fillStyle = this.color;
+      ctx.fill();
+    }
+  };
+
+  ball.draw();
+
+  function update() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ball.draw();
+    ball.x += ball.vx;
+    ball.y += ball.vy;
+    if (ball.y + ball.vy > canvas.height || ball.y + ball.vy < 0) {
+      ball.vy *= -1;
+    }
+    if (ball.x + ball.vx > canvas.width || ball.x + ball.vx < 0) {
+      ball.vx *= -1;
+    }
+  }
+
+  setInterval(update, 20);
+
+  document.getElementById("faster").onclick = function() {
+    ball.vx *= 1.1;
+  };
+
+  document.getElementById("slower").onclick = function() {
+    ball.vx *= 0.9;
+  };
+}
+velocity();
