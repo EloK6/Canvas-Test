@@ -1,3 +1,4 @@
+//FIRST FIGURE
 function pencil() {
   var canvas = document.getElementById("happy");
   if (canvas.getContext) {
@@ -15,6 +16,7 @@ function pencil() {
 }
 pencil();
 
+//PACMAN
 function draw() {
   var canvas = document.getElementById("game");
   if (canvas.getContext) {
@@ -144,6 +146,7 @@ function draw() {
 }
 draw();
 
+//COLORS
 function colors() {
   var ctx = document.getElementById("color").getContext("2d");
   for (var i = 0; i < 8; i++) {
@@ -157,6 +160,7 @@ function colors() {
 }
 colors();
 
+//STROKES
 function strokes() {
   var ctx = document.getElementById("stroke").getContext("2d");
   for (var i = 0; i < 8; i++) {
@@ -172,6 +176,7 @@ function strokes() {
 }
 strokes();
 
+//TRANSPARENCY
 function transparency() {
   var ctx = document.getElementById("transparency").getContext("2d");
   //Background
@@ -197,6 +202,7 @@ function transparency() {
 }
 transparency();
 
+//GRADIENT
 function gradient() {
   var ctx = document.getElementById("gradient").getContext("2d");
   // Create a radial gradient
@@ -217,7 +223,7 @@ function gradient() {
 }
 gradient();
 
-//Update
+//UPDATE
 function update() {
   var canvas = document.getElementById("update");
   var ctx = canvas.getContext("2d");
@@ -244,6 +250,7 @@ function update() {
 }
 update();
 
+//MOVEMENT
 function moving() {
   var ctx = document.getElementById("moving").getContext("2d");
   ctx.fillStyle = "blue";
@@ -308,7 +315,7 @@ function moving2() {
 }
 moving2();
 
-//game
+//GAME
 function userInteraction() {
   var canvas = document.getElementById("user-interaction");
   var ctx = canvas.getContext("2d");
@@ -371,6 +378,7 @@ function userInteraction() {
 }
 userInteraction();
 
+//SAVE AND RESTORE
 function saveAndRestore() {
   var ctx = document.getElementById("save_Restore").getContext("2d");
   ctx.fillRect(0, 0, 150, 150);
@@ -388,6 +396,7 @@ function saveAndRestore() {
 }
 saveAndRestore();
 
+//TRANSLATE
 function translate() {
   var ctx = document.getElementById("translate").getContext("2d");
   for (var i = 0; i < 3; i++) {
@@ -401,3 +410,29 @@ function translate() {
   }
 }
 translate();
+
+//ROTATE
+function rotate() {
+  var ctx = document.getElementById("rotate").getContext("2d");
+  // blue rect
+  ctx.fillStyle = "#0095DD";
+  ctx.fillRect(30, 30, 100, 100);
+  ctx.rotate((Math.PI / 180) * 25);
+  // grey rect
+  ctx.fillStyle = "#4D4E53";
+  ctx.fillRect(30, 30, 100, 100);
+}
+rotate();
+
+//COMPOSITION
+function composition() {
+  var ctx = document.getElementById("composition").getContext("2d");
+  ctx.fillStyle = "aqua";
+  ctx.fillRect(5, 5, 100, 100);
+  ctx.globalCompositeOperation = "xor";
+  ctx.beginPath();
+  ctx.fillStyle = "MediumVioletRed ";
+  ctx.arc(100, 100, 35, 0, 2 * Math.PI);
+  ctx.fill();
+}
+composition();
