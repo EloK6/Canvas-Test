@@ -370,3 +370,34 @@ function userInteraction() {
   updateCanvas();
 }
 userInteraction();
+
+function saveAndRestore() {
+  var ctx = document.getElementById("save_Restore").getContext("2d");
+  ctx.fillRect(0, 0, 150, 150);
+  ctx.save(); // Save the default state
+  ctx.fillStyle = "#09F";
+  ctx.save(); // Save the current state
+  ctx.fillRect(15, 15, 120, 120);
+  ctx.fillStyle = "#FFF";
+  ctx.globalAlpha = 0.5;
+  ctx.fillRect(30, 30, 90, 90);
+  ctx.restore(); // Restore previous state
+  ctx.fillRect(45, 45, 60, 60);
+  ctx.restore(); // Restore original state
+  ctx.fillRect(60, 60, 30, 30);
+}
+saveAndRestore();
+
+function translate() {
+  var ctx = document.getElementById("translate").getContext("2d");
+  for (var i = 0; i < 3; i++) {
+    for (var j = 0; j < 3; j++) {
+      ctx.save();
+      ctx.fillStyle = "rgb(" + 51 * i + ", " + (255 - 51 * i) + ", 255)";
+      ctx.translate(10 + j * 50, 10 + i * 50);
+      ctx.fillRect(0, 0, 25, 25);
+      ctx.restore();
+    }
+  }
+}
+translate();
